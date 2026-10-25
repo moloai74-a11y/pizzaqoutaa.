@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pizza Qouta – بيتزا قوطة | اطلب أونلاين</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&family=Kaushan+Script&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="i-cart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h3l2.6 12.5h10.6L21 7H6"/><circle cx="9.5" cy="20" r="1.6"/><circle cx="17" cy="20" r="1.6"/></symbol>
+<symbol id="i-trash" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13M10 11v6M14 11v6"/></symbol>
+<symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></symbol>
+<symbol id="i-wa" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 0 0-7.7 13.6L3 21l4.5-1.2A9 9 0 1 0 12 3z"/><path d="M9 8c0 4 3 7 7 7l1-2-2.5-1-1 1c-1-.5-2-1.5-2.5-2.5l1-1z"/></symbol>
+</defs></svg>
+<header class="top"><div class="bar">
+  <button class="icon-btn menu-btn" id="menuBtn" aria-label="القائمة">☰</button>
+  <a class="logo" href="#top" aria-label="Pizza Qouta"><span class="lg"><img data-logo alt="" width="46" height="46"><span class="lt"><b><i>Pizza</i> <em>Qouta</em></b><small>بيتزا قوطة</small></span></span></a>
+  <nav class="nav" id="nav" aria-label="الأقسام"></nav>
+  <button class="cart-btn" id="cartBtn" aria-label="فتح السلة"><svg class="ic"><use href="#i-cart"/></svg><span class="badge" id="badge">0</span></button>
+</div></header>
+
+<section class="hero" id="top"><div class="hero-in">
+  <div class="hero-txt"><h1>اطلب أكلك بسهولة</h1><p>بيتزا لذيذة .. بطعم مختلف</p></div>
+  <div class="hero-logo"><span class="lg"><img data-logo alt="" width="46" height="46"><span class="lt"><b><i>Pizza</i> <em>Qouta</em></b><small>بيتزا قوطة</small></span></span></div>
+</div></section>
+
+<main id="menu">
+  <div class="tools">
+    <label class="search"><svg class="ic"><use href="#i-search"/></svg><input id="search" type="search" placeholder="ابحث عن صنف..." autocomplete="off"></label>
+    <div class="chips" id="chips"></div>
+  </div>
+  <div class="grid" id="grid" aria-live="polite"></div>
+  <p class="empty" id="noRes" hidden>لا توجد أصناف مطابقة لبحثك.</p>
+</main>
+
+<button class="mbar" id="mbar" hidden><span class="mc"><svg class="ic"><use href="#i-cart"/></svg><i class="badge" id="mCount">0</i></span><span class="mr"><b id="mTotal">0 جنيه</b><span>عرض السلة ⌃</span></span></button>
+<div class="overlay" id="overlay" hidden></div>
+
+<aside class="drawer" id="cart" aria-label="سلة الطلبات" hidden>
+  <div class="dk"><span class="lg"><img data-logo alt="" width="46" height="46"><span class="lt"><b><i>Pizza</i> <em>Qouta</em></b><small>بيتزا قوطة</small></span></span><button class="icon-btn" data-close aria-label="إغلاق">✕</button></div>
+  <h2 class="ct"><svg class="ic red"><use href="#i-cart"/></svg> سلة الطلبات</h2>
+  <div class="d-body" id="cartBody"></div>
+  <div class="d-foot" id="cartFoot">
+    <div class="sum"><p><span>عدد الأصناف</span><b id="cKinds">0</b></p><p><span>إجمالي القطع</span><b id="cPcs">0</b></p></div>
+    <div class="total"><span>إجمالي الطلب</span><strong id="cTotal">0 جنيه</strong></div>
+    <p class="note">رسوم التوصيل غير محسوبة.</p>
+    <button class="btn red block" id="checkoutBtn">إتمام الطلب</button>
+    <button class="btn out block" data-cancel>إلغاء الطلب <svg class="ic"><use href="#i-trash"/></svg></button>
+  </div>
+</aside>
+
+<section class="modal" id="checkout" role="dialog" aria-modal="true" aria-label="بيانات العميل" hidden>
+  <div class="dk"><span class="lg"><img data-logo alt="" width="46" height="46"><span class="lt"><b><i>Pizza</i> <em>Qouta</em></b><small>بيتزا قوطة</small></span></span><button class="icon-btn" data-close aria-label="إغلاق">✕</button></div>
+  <div class="m-in">
+    <button class="back" id="backTop">الرجوع إلى السلة ←</button><h2 class="ct">بيانات العميل</h2>
+    <div class="cols">
+      <form id="form" novalidate>
+        <label><span>الاسم الكامل <i class="rq">*</i></span><input id="fName" placeholder="أدخل اسمك الكامل" autocomplete="name"><small class="err" id="eName"></small></label>
+        <label><span>رقم الهاتف <i class="rq">*</i></span><input id="fPhone" type="tel" inputmode="tel" placeholder="01xxxxxxxxx" autocomplete="tel" dir="ltr" style="text-align:right"><small class="err" id="ePhone"></small></label>
+        <label><span>عنوان التوصيل بالتفصيل <i class="rq">*</i></span><textarea id="fAddr" rows="3" placeholder="أدخل العنوان بالتفصيل"></textarea><small class="err" id="eAddr"></small></label>
+        <label><span>ملاحظات إضافية</span><textarea id="fNote" rows="2" placeholder="أي ملاحظات خاصة بالطلب؟ (اختياري)"></textarea></label>
+        <div class="acts"><button type="submit" class="btn green"><svg class="ic"><use href="#i-wa"/></svg> إرسال الأوردر على واتساب</button>
+        <button type="button" class="btn out" id="backCart">الرجوع إلى السلة ←</button>
+        <button type="button" class="btn gray" data-cancel>إلغاء الطلب <svg class="ic"><use href="#i-trash"/></svg></button></div>
+        <p class="note">سيُفتح واتساب والرسالة مكتوبة مسبقًا، ويجب أن تضغط «إرسال» داخل واتساب بنفسك. لا يُعتبر الطلب مؤكدًا إلا بعد رد المطعم.</p>
+      </form>
+      <div class="card sumcard">
+        <h3>ملخص الطلب</h3>
+        <div id="coItems"></div>
+        <div class="total"><span>إجمالي الأصناف</span><strong id="coTotal">0 جنيه</strong></div>
+        <p class="note warn">ملاحظة: إجمالي الطلب هو إجمالي الأصناف فقط، ولم يتم إضافة رسوم التوصيل.</p>
+        <details open><summary>معاينة رسالة واتساب</summary><div class="wa"><div class="wh"><img data-logo alt="" width="34" height="34"><div>Pizza Qouta<small>online</small></div><span>⋮</span></div><div class="wb"><pre id="preview"></pre></div><div class="wf">اكتب رسالة</div></div></details>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="toast" id="toast" role="status"></div>
+<script src="script.js"></script>
+</body>
+</html>
